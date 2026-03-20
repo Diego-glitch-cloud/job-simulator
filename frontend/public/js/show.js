@@ -6,7 +6,7 @@ document.getElementById("resource-label").textContent = window.RESOURCE;
 document.getElementById("edit-link").href = `edit.html?id=${id}`;
 
 const LABELS = ["Banda / Artista", "Género", "País", "Año Inicio", "Rating", "Activa"];
-const KEYS   = ["campo1", "campo2", "campo3", "campo4", "campo5", "campo6"];
+const KEYS   = ["name", "genre", "country", "year_formed", "rating", "is_active"];
 
 async function load() {
   try {
@@ -16,7 +16,7 @@ async function load() {
       <div class="show-header-row">
         <div>
           <p class="form-label show-label-id">ID ${r.id}</p>
-          <h1 class="font-semibold">${r.campo1}</h1>
+          <h1 class="font-semibold">${r.name}</h1>
         </div>
       </div>
       <dl class="form-grid">
@@ -24,7 +24,7 @@ async function load() {
           <div>
             <dt class="form-label">${LABELS[i]}</dt>
             <dd class="show-value">${
-              k === "campo6"
+              k === "is_active"
                 ? `<span class="badge ${r[k] ? 'badge-active' : 'badge-inactive'}">${r[k] ? 'Sí' : 'No'}</span>`
                 : r[k]
             }</dd>

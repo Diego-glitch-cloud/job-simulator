@@ -13,7 +13,7 @@ const sendJSON = (res, statusCode, data) => {
 // Validaciones estrictas según el README
 const validateBody = (body, isPatch = false) => {
   const errors = [];
-  const requiredFields = ['campo1', 'campo2', 'campo3', 'campo4', 'campo5', 'campo6'];
+  const requiredFields = ['name', 'genre', 'country', 'year_formed', 'rating', 'is_active'];
 
   if (!isPatch) {
     for (const field of requiredFields) {
@@ -23,12 +23,12 @@ const validateBody = (body, isPatch = false) => {
     }
   }
 
-  if (body.campo1 !== undefined && typeof body.campo1 !== 'string') errors.push('campo1 (Banda) debe ser string');
-  if (body.campo2 !== undefined && typeof body.campo2 !== 'string') errors.push('campo2 (Género) debe ser string');
-  if (body.campo3 !== undefined && typeof body.campo3 !== 'string') errors.push('campo3 (País) debe ser string');
-  if (body.campo4 !== undefined && !Number.isInteger(body.campo4)) errors.push('campo4 (Año) debe ser integer');
-  if (body.campo5 !== undefined && typeof body.campo5 !== 'number') errors.push('campo5 (Rating) debe ser float');
-  if (body.campo6 !== undefined && typeof body.campo6 !== 'boolean') errors.push('campo6 (Activa) debe ser boolean');
+  if (body.name !== undefined && typeof body.name !== 'string') errors.push('name (Banda) debe ser string');
+  if (body.genre !== undefined && typeof body.genre !== 'string') errors.push('genre (Género) debe ser string');
+  if (body.country !== undefined && typeof body.country !== 'string') errors.push('country (País) debe ser string');
+  if (body.year_formed !== undefined && !Number.isInteger(body.year_formed)) errors.push('year_formed (Año) debe ser integer');
+  if (body.rating !== undefined && typeof body.rating !== 'number') errors.push('rating (Rating) debe ser float');
+  if (body.is_active !== undefined && typeof body.is_active !== 'boolean') errors.push('is_active (Activa) debe ser boolean');
 
   return errors;
 };
@@ -36,7 +36,7 @@ const validateBody = (body, isPatch = false) => {
 // Formateador para asegurar que float siga siendo numérico (node-pg devuelve string en NUMERIC)
 const formatRow = (row) => ({
   ...row,
-  campo5: parseFloat(row.campo5)
+  rating: parseFloat(row.rating)
 });
 
 module.exports = async (req, res) => {
@@ -62,10 +62,10 @@ module.exports = async (req, res) => {
       const errors = validateBody(req.body);
       if (errors.length > 0) return sendJSON(res, 400, { errors });
 
-      const { campo1, campo2, campo3, campo4, campo5, campo6 } = req.body;
+      const { name, genre, country, year_formed, rating, is_active } = req.body;
       const result = await db.query(
-        'INSERT INTO bands (campo1, campo2, campo3, campo4, campo5, campo6) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
-        [campo1, campo2, campo3, campo4, campo5, campo6]
+        'INSERT INTO bands (name, genre, country, year_formed, rating, is_active) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+        [name, genre, country, year_formed, rating, is_active]
       );
       return sendJSON(res, 201, formatRow(result.rows[0]));
     }
@@ -76,10 +76,10 @@ module.exports = async (req, res) => {
       const errors = validateBody(req.body);
       if (errors.length > 0) return sendJSON(res, 400, { errors });
 
-      const { campo1, campo2, campo3, campo4, campo5, campo6 } = req.body;
+      const { name, genre, country, year_formed, rating, is_active } = req.body;
       const result = await db.query(
-        'UPDATE bands SET campo1=$1, campo2=$2, campo3=$3, campo4=$4, campo5=$5, campo6=$6 WHERE id=$7 RETURNING *',
-        [campo1, campo2, campo3, campo4, campo5, campo6, id]
+        'UPDATE bands SET name=$1, genre=$2, country=$3, year_formed=$4, rating=$5, is_active=$6 WHERE id=$7 RETURNING *',
+        [name, genre, country, year_formed, rating, is_active, id]
       );
       if (result.rows.length === 0) return sendJSON(res, 404, { error: 'No encontrado' });
       return sendJSON(res, 200, formatRow(result.rows[0]));
@@ -94,7 +94,7 @@ module.exports = async (req, res) => {
       const updates = [];
       const values = [];
       let idx = 1;
-      const fields = ['campo1', 'campo2', 'campo3', 'campo4', 'campo5', 'campo6'];
+      const fields = ['name', 'genre', 'country', 'year_formed', 'rating', 'is_active'];
       for (const field of fields) {
         if (req.body[field] !== undefined) {
           updates.push(`${field}=$${idx}`);

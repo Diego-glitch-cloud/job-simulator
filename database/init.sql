@@ -1,15 +1,15 @@
 CREATE TABLE IF NOT EXISTS bands (
     id SERIAL PRIMARY KEY,
-    campo1 VARCHAR(255) NOT NULL,      -- string: name
-    campo2 VARCHAR(255) NOT NULL,      -- string: genre
-    campo3 VARCHAR(255) NOT NULL,      -- string: country
-    campo4 INTEGER NOT NULL,           -- integer: year_formed
-    campo5 NUMERIC(3,1) NOT NULL,      -- float: rating
-    campo6 BOOLEAN NOT NULL            -- boolean: is_active
+    name VARCHAR(255) NOT NULL,      -- string: name
+    genre VARCHAR(255) NOT NULL,      -- string: genre
+    country VARCHAR(255) NOT NULL,      -- string: country
+    year_formed INTEGER NOT NULL,           -- integer: year_formed
+    rating NUMERIC(3,1) NOT NULL,      -- float: rating
+    is_active BOOLEAN NOT NULL            -- boolean: is_active
 );
 
 -- Inserción de los registros
-INSERT INTO bands (id, campo1, campo2, campo3, campo4, campo5, campo6) VALUES
+INSERT INTO bands (id, name, genre, country, year_formed, rating, is_active) VALUES
 (1, 'Geese', 'Indie Rock', 'USA', 2016, 4.5, true),
 (2, 'Metallica', 'Thrash Metal', 'USA', 1981, 4.9, true),
 (3, 'Pink Floyd', 'Progressive Rock', 'UK', 1965, 5.0, false),

@@ -17,14 +17,14 @@ async function load() {
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td>${r.id}</td>
-        <td class="font-medium">${r.campo1}</td>
-        <td>${r.campo2}</td>
-        <td>${r.campo3}</td>
-        <td>${r.campo4}</td>
-        <td>${r.campo5}</td>
+        <td class="font-medium">${r.name}</td>
+        <td>${r.genre}</td>
+        <td>${r.country}</td>
+        <td>${r.year_formed}</td>
+        <td>${r.rating}</td>
         <td>
-          <span class="badge ${r.campo6 ? 'badge-active' : 'badge-inactive'}">
-            ${r.campo6 ? 'Sí' : 'No'}
+          <span class="badge ${r.is_active ? 'badge-active' : 'badge-inactive'}">
+            ${r.is_active ? 'Sí' : 'No'}
           </span>
         </td>
         <td class="text-right">
