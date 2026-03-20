@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS bands (
     campo6 BOOLEAN NOT NULL            -- boolean: is_active
 );
 
--- Inserción de los registros basados en tu JSON (semilla inicial)
+-- Inserción de los registros
 INSERT INTO bands (id, campo1, campo2, campo3, campo4, campo5, campo6) VALUES
 (1, 'Geese', 'Indie Rock', 'USA', 2016, 4.5, true),
 (2, 'Metallica', 'Thrash Metal', 'USA', 1981, 4.9, true),
