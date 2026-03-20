@@ -1,7 +1,7 @@
 const http = require('http');
 const routes = require('./routes/bands');
 
-const PORT = 8080;
+const PORT = process.env.PORT || 3000;
 
 const server = http.createServer(async (req, res) => {
   // Configuración de CORS estricta y manual

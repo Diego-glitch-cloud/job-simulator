@@ -9,31 +9,28 @@ async function load() {
     const empty = document.getElementById("empty");
 
     if (records.length === 0) {
-      empty.classList.remove("hidden");
+      empty.classList.add("visible");
       return;
     }
 
     records.forEach(r => {
       const tr = document.createElement("tr");
-      tr.className = "hover:bg-slate-800/50 transition-colors";
       tr.innerHTML = `
-        <td class="px-6 py-4 text-slate-500 text-sm">${r.id}</td>
-        <td class="px-6 py-4 font-medium">${r.campo1}</td>
-        <td class="px-6 py-4 text-slate-300">${r.campo2}</td>
-        <td class="px-6 py-4 text-slate-300">${r.campo3}</td>
-        <td class="px-6 py-4 text-slate-300">${r.campo4}</td>
-        <td class="px-6 py-4 text-slate-300">${r.campo5}</td>
-        <td class="px-6 py-4">
-          <span class="px-2 py-0.5 rounded-full text-xs font-medium ${r.campo6 ? 'bg-emerald-900/50 text-emerald-400' : 'bg-slate-700 text-slate-400'}">
-            ${r.campo6}
+        <td>${r.id}</td>
+        <td style="font-weight: 500;">${r.campo1}</td>
+        <td>${r.campo2}</td>
+        <td>${r.campo3}</td>
+        <td>${r.campo4}</td>
+        <td>${r.campo5}</td>
+        <td>
+          <span style="font-size:0.75rem; padding:0.25rem 0.5rem; border-radius:1rem; ${r.campo6 ? 'background:#064e3b; color:#34d399;' : 'background:#334155; color:#94a3b8;'}">
+            ${r.campo6 ? 'Sí' : 'No'}
           </span>
         </td>
-        <td class="px-6 py-4">
-          <div class="flex items-center justify-end gap-2">
-            <a href="show.html?id=${r.id}" class="text-xs text-slate-400 hover:text-white transition-colors px-3 py-1.5 rounded-md border border-slate-700 hover:border-slate-500">Ver</a>
-            <a href="edit.html?id=${r.id}" class="text-xs text-indigo-400 hover:text-indigo-300 transition-colors px-3 py-1.5 rounded-md border border-indigo-900 hover:border-indigo-600">Editar</a>
-            <button data-id="${r.id}" class="delete-btn text-xs text-red-400 hover:text-red-300 transition-colors px-3 py-1.5 rounded-md border border-red-900 hover:border-red-700">Eliminar</button>
-          </div>
+        <td class="text-right">
+          <a href="show.html?id=${r.id}" class="action-link">Ver</a>
+          <a href="edit.html?id=${r.id}" class="action-link">Editar</a>
+          <button data-id="${r.id}" class="action-delete delete-btn">Eliminar</button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -58,7 +55,7 @@ async function load() {
 function showError(msg) {
   const el = document.getElementById("error");
   el.textContent = msg;
-  el.classList.remove("hidden");
+  el.classList.add("visible");
 }
 
 load();

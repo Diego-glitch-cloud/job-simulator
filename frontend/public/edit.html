@@ -3,77 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Simulator — Editar registro</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Job Simulator — Editar Banda</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen">
+<body class="app-body">
 
-  <header class="bg-slate-900 border-b border-slate-800 px-8 py-4">
-    <div class="flex items-center gap-3 max-w-3xl mx-auto">
-      <a href="index.html" class="text-slate-500 hover:text-slate-300 transition-colors text-sm">← Volver</a>
-      <span class="text-slate-700">/</span>
-      <span class="text-indigo-500 font-bold tracking-tight">Job Simulator</span>
-      <span class="text-slate-700">/</span>
-      <span class="text-slate-400 text-sm">Editar registro</span>
+  <header class="app-header">
+    <div class="header-container" style="max-width: 48rem;">
+      <div class="flex-group">
+        <a href="index.html" class="slash" style="text-decoration:none; font-size:0.875rem;">← Volver</a>
+        <span class="slash">/</span>
+        <span class="app-title">Job Simulator</span>
+        <span class="slash">/</span>
+        <span class="app-subtitle" style="color: #94a3b8; text-transform:none;">Editar registro</span>
+      </div>
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto px-8 py-10">
-    <div id="error" class="hidden mb-6 bg-red-950 border border-red-800 text-red-400 px-4 py-3 rounded-lg text-sm"></div>
+  <main class="main-content" style="max-width: 48rem;">
+    <div id="error" class="error-msg"></div>
 
-    <div class="bg-slate-900 border border-slate-800 rounded-xl p-8">
-      <h1 class="text-lg font-semibold mb-8">Editar registro</h1>
+    <div class="table-card" style="padding: 2rem;">
+      <h1 style="font-size: 1.125rem; font-weight: 600; margin-top: 0; margin-bottom: 2rem;">Editar registro</h1>
 
-      <form id="form" class="space-y-6" novalidate>
-        <div class="grid grid-cols-2 gap-6">
+      <form id="form" novalidate style="display:flex; flex-direction:column; gap:1.5rem;">
+        <div class="form-grid">
 
-          <div class="flex flex-col gap-2">
-            <label class="text-xs text-slate-500 uppercase tracking-wider">Campo 1 <span class="text-slate-600">string</span></label>
-            <input name="campo1" type="text" required
-              class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 transition-colors">
+          <div class="form-group">
+            <label class="form-label">Banda / Artista <span>string</span></label>
+            <input name="campo1" type="text" required class="form-input">
           </div>
 
-          <div class="flex flex-col gap-2">
-            <label class="text-xs text-slate-500 uppercase tracking-wider">Campo 2 <span class="text-slate-600">string</span></label>
-            <input name="campo2" type="text" required
-              class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 transition-colors">
+          <div class="form-group">
+            <label class="form-label">Género <span>string</span></label>
+            <input name="campo2" type="text" required class="form-input">
           </div>
 
-          <div class="flex flex-col gap-2">
-            <label class="text-xs text-slate-500 uppercase tracking-wider">Campo 3 <span class="text-slate-600">string</span></label>
-            <input name="campo3" type="text" required
-              class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 transition-colors">
+          <div class="form-group">
+            <label class="form-label">País <span>string</span></label>
+            <input name="campo3" type="text" required class="form-input">
           </div>
 
-          <div class="flex flex-col gap-2">
-            <label class="text-xs text-slate-500 uppercase tracking-wider">Campo 4 <span class="text-slate-600">integer</span></label>
-            <input name="campo4" type="number" step="1" required
-              class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 transition-colors">
+          <div class="form-group">
+            <label class="form-label">Año Inicio <span>integer</span></label>
+            <input name="campo4" type="number" step="1" required class="form-input">
           </div>
 
-          <div class="flex flex-col gap-2">
-            <label class="text-xs text-slate-500 uppercase tracking-wider">Campo 5 <span class="text-slate-600">float</span></label>
-            <input name="campo5" type="number" step="0.01" required
-              class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 transition-colors">
+          <div class="form-group">
+            <label class="form-label">Rating <span>float</span></label>
+            <input name="campo5" type="number" step="0.01" required class="form-input">
           </div>
 
-          <div class="flex flex-col gap-2">
-            <label class="text-xs text-slate-500 uppercase tracking-wider">Campo 6 <span class="text-slate-600">boolean</span></label>
-            <div class="flex items-center h-10">
-              <input name="campo6" type="checkbox"
-                class="w-4 h-4 rounded border-slate-600 bg-slate-800 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-900 cursor-pointer">
+          <div class="form-group">
+            <label class="form-label">Activa <span>boolean</span></label>
+            <div style="display:flex; align-items:center; height: 2.5rem;">
+              <input name="campo6" type="checkbox" style="width:1rem; height:1rem; cursor:pointer;">
             </div>
           </div>
 
         </div>
 
-        <div class="flex gap-3 pt-2">
-          <button id="submit-btn" type="submit"
-            class="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium px-6 py-2.5 rounded-lg transition-colors">
+        <div class="form-actions">
+          <button id="submit-btn" type="submit" class="btn-primary">
             Guardar cambios
           </button>
-          <a href="index.html"
-            class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-medium px-6 py-2.5 rounded-lg transition-colors">
+          <a href="index.html" class="btn-secondary">
             Cancelar
           </a>
         </div>
