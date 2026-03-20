@@ -9,24 +9,24 @@
 <body class="app-body">
 
   <header class="app-header">
-    <div class="header-container" style="max-width: 48rem;">
+    <div class="header-container max-w-md">
       <div class="flex-group">
-        <a href="index.html" class="slash" style="text-decoration:none; font-size:0.875rem;">← Volver</a>
+        <a href="index.html" class="slash text-link">← Volver</a>
         <span class="slash">/</span>
         <span class="app-title">Job Simulator</span>
         <span class="slash">/</span>
-        <span class="app-subtitle" style="color: #94a3b8; text-transform:none;">Nueva Banda</span>
+        <span class="app-subtitle text-subtitle text-normal">Nueva Banda</span>
       </div>
     </div>
   </header>
 
-  <main class="main-content" style="max-width: 48rem;">
+  <main class="main-content max-w-md">
     <div id="error" class="error-msg"></div>
 
-    <div class="table-card" style="padding: 2rem;">
-      <h1 style="font-size: 1.125rem; font-weight: 600; margin-top: 0; margin-bottom: 2rem;">Registrar nueva Banda / Artista</h1>
+    <div class="table-card p-card">
+      <h1 class="form-title">Registrar nueva Banda / Artista</h1>
 
-      <form id="form" novalidate style="display:flex; flex-direction:column; gap:1.5rem;">
+      <form id="form" novalidate class="form-wrapper">
         <div class="form-grid">
 
           <div class="form-group">
@@ -56,8 +56,8 @@
 
           <div class="form-group">
             <label class="form-label">Activa <span>boolean</span></label>
-            <div style="display:flex; align-items:center; height: 2.5rem;">
-              <input name="campo6" type="checkbox" style="width:1rem; height:1rem; cursor:pointer;">
+            <div class="checkbox-wrapper">
+              <input name="campo6" type="checkbox" class="checkbox-input">
             </div>
           </div>
 

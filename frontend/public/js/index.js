@@ -17,13 +17,13 @@ async function load() {
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td>${r.id}</td>
-        <td style="font-weight: 500;">${r.campo1}</td>
+        <td class="font-medium">${r.campo1}</td>
         <td>${r.campo2}</td>
         <td>${r.campo3}</td>
         <td>${r.campo4}</td>
         <td>${r.campo5}</td>
         <td>
-          <span style="font-size:0.75rem; padding:0.25rem 0.5rem; border-radius:1rem; ${r.campo6 ? 'background:#064e3b; color:#34d399;' : 'background:#334155; color:#94a3b8;'}">
+          <span class="badge ${r.campo6 ? 'badge-active' : 'badge-inactive'}">
             ${r.campo6 ? 'Sí' : 'No'}
           </span>
         </td>

@@ -13,19 +13,19 @@ async function load() {
     const r = await getOne(id);
 
     document.getElementById("card").innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 2rem;">
+      <div class="show-header-row">
         <div>
-          <p class="form-label" style="margin-bottom: 0.25rem;">ID ${r.id}</p>
-          <h1 style="font-size: 1.5rem; font-weight: 600; margin: 0; color:#f8fafc;">${r.campo1}</h1>
+          <p class="form-label show-label-id">ID ${r.id}</p>
+          <h1 class="font-semibold">${r.campo1}</h1>
         </div>
       </div>
       <dl class="form-grid">
         ${KEYS.map((k, i) => `
           <div>
             <dt class="form-label">${LABELS[i]}</dt>
-            <dd style="color: #e2e8f0; font-size:1rem; margin-top:0.25rem; font-weight: 500;">${
+            <dd class="show-value">${
               k === "campo6"
-                ? `<span style="font-size:0.75rem; padding:0.25rem 0.5rem; border-radius:1rem; ${r[k] ? 'background:#064e3b; color:#34d399;' : 'background:#334155; color:#94a3b8;'}">${r[k] ? 'Sí' : 'No'}</span>`
+                ? `<span class="badge ${r[k] ? 'badge-active' : 'badge-inactive'}">${r[k] ? 'Sí' : 'No'}</span>`
                 : r[k]
             }</dd>
           </div>
